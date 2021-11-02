@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ex01.mapper.CommentMapper">
+	
+	<insert id="insert">
+		<![CDATA[
+			INSERT	INTO	tbl_comment(userid, content, regdate, bnum)
+			VALUES			(#{userid}, #{content}, now(), #{bnum})
+		]]>
+	</insert>
+	
+	<select id="getList" resultType="CommentVO">
+		<![CDATA[
+			SELECT	*
+			FROM	tbl_comment
+			WHERE	bnum = #{bnum}
+		]]>
+	</select>
+	
+	<delete id="delete">
+		<![CDATA[
+			DELETE FROM	tbl_comment
+			WHERE		cnum=#{cnum}
+		]]>
+	</delete>
+	
+	<select id="findByNum" resultType="CommentVO">
+		<![CDATA[
+			SELECT	*
+			FROM	tbl_comment
+			WHERE	cnum=#{cnum}
+		]]>
+	</select>
+
+</mapper>
